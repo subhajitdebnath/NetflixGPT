@@ -1,0 +1,22 @@
+- Create React App
+- Setup Tailwind - https://tailwindcss.com/docs/guides/create-react-app
+
+
+
+
+# Features
+- Login / Signup Page
+    - Signin / Signup Form
+    - Redirect to browse Page
+
+- Browse Page
+    - Header
+    - Main Movie
+        - Trailor in the background
+        - Title & Description
+        - Movie Suggestions
+            - MovieLists * n
+
+- NetflixGPT
+    - Search Bar
+    - Movie Suggestions
