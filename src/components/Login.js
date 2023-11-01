@@ -56,57 +56,57 @@ const Login = () => {
                 isSubmitting,
                 /* and other goodies */
             }) => (
-        <form className='absolute w-1/3 p-12 bg-black my-20 mx-auto right-0 left-0 text-white bg-opacity-70 rounded' onSubmit={handleSubmit}>
-            <h1 className='font-bold text-3xl py-4'>{isSignInForm ? 'Sign In' : 'Sign Up'}</h1>
-            {!isSignInForm ? 
-            <>
-                <input
-                    placeholder='Name'
-                    className='p-4 my-4 w-full bg-slate-800 rounded' 
-                    type="text"
-                    name="name"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.name}
-                />
-                <p className='text-sm pb-1 text-red-500'>{errors.name && touched.name && errors.name}</p>
-            </> : ''}
-            <input
-                placeholder='Email'
-                className='p-4 my-4 w-full bg-slate-800 rounded' 
-                type="email"
-                name="email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.email}
-            />
-            <p className='text-sm pb-1 text-red-500'>{errors.email && touched.email && errors.email}</p>
+                <form className='absolute w-1/3 p-12 bg-black my-20 mx-auto right-0 left-0 text-white bg-opacity-70 rounded' onSubmit={handleSubmit}>
+                    <h1 className='font-bold text-3xl py-4'>{isSignInForm ? 'Sign In' : 'Sign Up'}</h1>
+                    {!isSignInForm ? 
+                    <>
+                        <input
+                            placeholder='Name'
+                            className='p-4 my-4 w-full bg-slate-800 rounded' 
+                            type="text"
+                            name="name"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            value={values.name}
+                        />
+                        <p className='text-sm pb-1 text-red-500'>{errors.name && touched.name && errors.name}</p>
+                    </> : ''}
+                    <input
+                        placeholder='Email'
+                        className='p-4 my-4 w-full bg-slate-800 rounded' 
+                        type="email"
+                        name="email"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                    />
+                    <p className='text-sm pb-1 text-red-500'>{errors.email && touched.email && errors.email}</p>
 
-            <input
-                placeholder='Password'
-                className='p-4 my-4 w-full bg-slate-800 rounded' 
-                type="password"
-                name="password"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-            />
-            <p className='text-sm pb-1 text-red-500'>{errors.password && touched.password && errors.password}</p>
+                    <input
+                        placeholder='Password'
+                        className='p-4 my-4 w-full bg-slate-800 rounded' 
+                        type="password"
+                        name="password"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                    />
+                    <p className='text-sm pb-1 text-red-500'>{errors.password && touched.password && errors.password}</p>
 
-            <button type='submit' className='p-4 my-6 bg-red-700 w-full rounded'>{isSignInForm ? 'Sign In' : 'Sign Up'}</button>
-            <div className='flex justify-between text-slate-400'>
-                <div><input type='checkbox' label="Remember Me"/>Remember Me</div>
-                <div>Need Help?</div>
-            </div>
-            <div className='flex justify-between'>
-                {isSignInForm ? 
-                <div disabled={isSubmitting} className='pt-10 text-slate-400'>New to Netflix? <span className='hover:underline cursor-pointer text-white' onClick={toggleSignInForm}>Sign up now.</span></div>
-                 : 
-                 <div disabled={isSubmitting} className='pt-10 text-slate-400'>Already a user? <span className='hover:underline cursor-pointer text-white' onClick={toggleSignInForm}>Sign in here.</span></div>
-                }
-            </div>
-        </form>
-        )}
+                    <button type='submit' className='p-4 my-6 bg-red-700 w-full rounded'>{isSignInForm ? 'Sign In' : 'Sign Up'}</button>
+                    <div className='flex justify-between text-slate-400'>
+                        <div><input type='checkbox' label="Remember Me"/>Remember Me</div>
+                        <div>Need Help?</div>
+                    </div>
+                    <div className='flex justify-between'>
+                        {isSignInForm ? 
+                        <div disabled={isSubmitting} className='pt-10 text-slate-400'>New to Netflix? <span className='hover:underline cursor-pointer text-white' onClick={toggleSignInForm}>Sign up now.</span></div>
+                        : 
+                        <div disabled={isSubmitting} className='pt-10 text-slate-400'>Already a user? <span className='hover:underline cursor-pointer text-white' onClick={toggleSignInForm}>Sign in here.</span></div>
+                        }
+                    </div>
+                </form>
+            )}
         </Formik>
     </div>
   )
