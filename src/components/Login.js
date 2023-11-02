@@ -1,9 +1,16 @@
 import React, { useState } from 'react'
 import Header from './Header';
 import { Formik } from 'formik';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    
+    const navigate = useNavigate();
     const [isSignInForm, setIsSignInForm] = useState(true);
+    const [errorMsg, setErrorMsg] = useState('');
+    const [successMsg, setSuccessMsg] = useState('');
 
     const toggleSignInForm = () => {
         setIsSignInForm(!isSignInForm);
@@ -20,7 +27,7 @@ const Login = () => {
             />
         </div>
         <Formik
-            initialValues={{ name: '', email: '', password: '' }}
+            initialValues={{ name: '', email: 'test@mail.com', password: '123456' }}
             validate={values => {
                 const errors = {};
                 if (!values.name && !isSignInForm) {
@@ -39,11 +46,36 @@ const Login = () => {
                 return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
-                console.log(values)
-                setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-                }, 400);
+                // console.log(values)
+                // setTimeout(() => {
+                // alert(JSON.stringify(values, null, 2));
+                // setSubmitting(false);
+                // }, 400);
+                setErrorMsg('');
+                setSuccessMsg('');
+                if(!isSignInForm) { // creating a new user
+                    createUserWithEmailAndPassword(auth, values.email, values.password).then((userCredential) => {
+                        const user = userCredential.user;
+                        console.log(user);
+                        setSuccessMsg('Signup Successfull. You can signin now');
+                    }).catch((error) => {
+                        // const errorCode = error.code;
+                        const errorMessage = error.message;
+                        setErrorMsg(errorMessage);
+                    });
+                } else { // signin user
+                    signInWithEmailAndPassword(auth, values.email, values.password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        console.log(user)
+                        setSuccessMsg('Signed In');
+                        navigate('/browse');
+                    })
+                    .catch((error) => {
+                        // const errorCode = error.code;
+                        setErrorMsg(error.message);
+                    });
+                }
             }}
             >
             {({
@@ -94,6 +126,10 @@ const Login = () => {
                     <p className='text-sm pb-1 text-red-500'>{errors.password && touched.password && errors.password}</p>
 
                     <button type='submit' className='p-4 my-6 bg-red-700 w-full rounded'>{isSignInForm ? 'Sign In' : 'Sign Up'}</button>
+
+                    {errorMsg? <p className='text-sm pb-5 text-red-500'>{errorMsg}</p> : ''}
+                    {successMsg? <p className='text-sm pb-5 text-green-500'>{successMsg}</p> : ''}
+
                     <div className='flex justify-between text-slate-400'>
                         <div><input type='checkbox' label="Remember Me"/>Remember Me</div>
                         <div>Need Help?</div>

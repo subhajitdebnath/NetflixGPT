@@ -1,5 +1,16 @@
+# Process
 - Create React App
 - Setup Tailwind - https://tailwindcss.com/docs/guides/create-react-app
+- Header
+- Routing
+- Login/ Signup Form
+- Form setup and validation using Formik
+- Firebase Setup
+- Deployment of app using Firebase Hosting
+- Create User Accounts with Firebase Api
+- Login User with Firebase Api
+- Add Redux to the app
+
 
 
 
