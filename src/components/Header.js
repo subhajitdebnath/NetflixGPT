@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
+import { LOGO } from '../utils/constant';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => { // subscribing the event listener
       if (user) {
         const {uid, email, displayName, accessToken, photoURL} = user;
         dispatch(addUser({uid, email, displayName, accessToken, photoURL}));
@@ -28,6 +29,7 @@ const Header = () => {
         navigate('/');
       }
     });
+    return () => unsubscribe(); // removing the event listener on comonent unmount
   }, []);
 
   return (
@@ -35,7 +37,7 @@ const Header = () => {
       <img
         className='w-44'
         alt='logo' 
-        src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png'
+        src= {LOGO}
       />
       {user? <div className='flex p-4 items-center'>
         <div className='text-slate-100 cursor-pointer hover:text-white hover:underline'>{user?.displayName}</div>

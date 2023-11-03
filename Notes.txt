@@ -12,7 +12,9 @@
 - Add Redux to the app
 - Implemented Firebase Signup
 - Profile Update with Firebase
+- Route guard using header
 - Movies fetch from TMDB Apis
+- 
 
 
 

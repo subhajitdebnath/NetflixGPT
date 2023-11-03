@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BG_COVER, USER_AVATAR } from '../utils/constant';
 
 const Login = () => {
     
@@ -23,7 +24,7 @@ const Login = () => {
         <Header />
         <div className='absolute brightness-50 bg-cover'>
             <img
-             src='https://assets.nflxext.com/ffe/siteui/vlv3/dace47b4-a5cb-4368-80fe-c26f3e77d540/f5b52435-458f-498f-9d1d-ccd4f1af9913/IN-en-20231023-popsignuptwoweeks-perspective_alpha_website_medium.jpg'
+             src={BG_COVER}
              alt='bg img'
             />
         </div>
@@ -59,7 +60,7 @@ const Login = () => {
                         const user = userCredential.user;
                         console.log(user);
                         updateProfile(auth.currentUser, {
-                            displayName: values.name, photoURL: "https://avatars.githubusercontent.com/u/33748454?v=4"
+                            displayName: values.name, photoURL: USER_AVATAR
                           }).then(() => {
                             const {uid, email, displayName, accessToken, photoURL} = auth.currentUser;
                             dispatch(addUser({uid, email, displayName, accessToken, photoURL}));
