@@ -10,7 +10,9 @@
 - Create User Accounts with Firebase Api
 - Login User with Firebase Api
 - Add Redux to the app
-
+- Implemented Firebase Signup
+- Profile Update with Firebase
+- Movies fetch from TMDB Apis
 
 
 

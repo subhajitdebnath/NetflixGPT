@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import { useSelector } from 'react-redux';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice';
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector(store => store.user);
 
   const logOut = () => {
@@ -14,6 +16,19 @@ const Header = () => {
     }).catch((error) => {
     });
   }
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const {uid, email, displayName, accessToken, photoURL} = user;
+        dispatch(addUser({uid, email, displayName, accessToken, photoURL}));
+        navigate('/browse');
+      } else {
+        dispatch(removeUser());
+        navigate('/');
+      }
+    });
+  }, []);
 
   return (
     <div className='absolute px-8 py-2 z-10 w-screen bg-gradient-to-b from-black flex justify-between'>

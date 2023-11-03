@@ -37,7 +37,7 @@ const Body = () => {
                 dispatch(removeUser());
             }
         });
-    }, [])
+    }, []);
 
   return (
     <div>
