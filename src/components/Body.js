@@ -26,11 +26,12 @@ const Body = () => {
     useEffect(() => {
 
         onAuthStateChanged(auth, (user) => {
+            console.log(user)
             if (user) {
                 // User is signed in, see docs for a list of available properties
                 // https://firebase.google.com/docs/reference/js/auth.user
-                const {uid, email, displayName, accessToken} = user;
-                dispatch(addUser({uid, email, displayName, accessToken}));
+                const {uid, email, displayName, accessToken, photoURL} = user;
+                dispatch(addUser({uid, email, displayName, accessToken, photoURL}));
             } else {
                 // User is signed out
                 dispatch(removeUser());

@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import Header from './Header';
 import { Formik } from 'formik';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const Login = () => {
     
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMsg, setErrorMsg] = useState('');
     const [successMsg, setSuccessMsg] = useState('');
@@ -27,7 +30,7 @@ const Login = () => {
             />
         </div>
         <Formik
-            initialValues={{ name: '', email: 'test@mail.com', password: '123456' }}
+            initialValues={{ name: '', email: 'test2@mail.com', password: '123456' }}
             validate={values => {
                 const errors = {};
                 if (!values.name && !isSignInForm) {
@@ -57,7 +60,17 @@ const Login = () => {
                     createUserWithEmailAndPassword(auth, values.email, values.password).then((userCredential) => {
                         const user = userCredential.user;
                         console.log(user);
-                        setSuccessMsg('Signup Successfull. You can signin now');
+                        updateProfile(auth.currentUser, {
+                            displayName: values.name, photoURL: "https://avatars.githubusercontent.com/u/33748454?v=4"
+                          }).then(() => {
+                            const {uid, email, displayName, accessToken, photoURL} = auth.currentUser;
+                            dispatch(addUser({uid, email, displayName, accessToken, photoURL}));
+
+                            setSuccessMsg('Signup Successfull. You can signin now');
+                          }).catch((error) => {
+                            const errorMessage = error.message;
+                            setErrorMsg(errorMessage);
+                          });
                     }).catch((error) => {
                         // const errorCode = error.code;
                         const errorMessage = error.message;
