@@ -13,8 +13,10 @@ const VideoContainer = () => {
 
   return (
     <div>
-        <iframe width="560" height="315" src={"https://www.youtube.com/embed/" + movieTrailor?.key} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-        <div className='pt-36 px-12'>
+        <div>
+            <iframe className='w-screen aspect-video absolute' src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=1"} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+        </div>
+        <div className='pt-[20rem] px-12 text-white absolute'>
             <h1 className='text-6xl bold'>{mainMovie?.original_title}</h1>
             <p className='py-6 text-lg w-1/2'>{mainMovie?.overview}</p>
             <div>
