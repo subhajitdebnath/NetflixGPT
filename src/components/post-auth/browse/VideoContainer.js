@@ -20,8 +20,8 @@ const VideoContainer = () => {
             <h1 className='text-6xl bold'>{mainMovie?.original_title}</h1>
             <p className='py-6 text-lg w-1/2'>{mainMovie?.overview}</p>
             <div>
-                <button className='bg-gray-500 text-black p-4 rounded center text-xl w-40 bg-opacity-70'>Play</button>
-                <button className='bg-gray-500 text-black p-4 rounded center text-xl w-40 bg-opacity-70 mx-2'>More Info</button>
+                <button className='bg-white text-black p-4 rounded center text-xl w-40 hover:bg-opacity-70'>Play</button>
+                <button className='bg-white text-black p-4 rounded center text-xl w-40 hover:bg-opacity-70 mx-2'>More Info</button>
             </div>
         </div>
     </div>
