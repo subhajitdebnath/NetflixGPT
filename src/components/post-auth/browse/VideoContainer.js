@@ -14,7 +14,7 @@ const VideoContainer = () => {
   return (
     <div>
         <div>
-            <iframe className='w-screen aspect-video absolute' src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=1&mute=1"} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            <iframe className='w-screen aspect-video absolute' src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=0&mute=0"} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
         </div>
         <div className='pt-[20rem] px-12 text-white absolute'>
             <h1 className='text-6xl bold'>{mainMovie?.original_title}</h1>
