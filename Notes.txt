@@ -17,8 +17,8 @@
 - constant file created
 - Movies fetch from TMDB Apis(https://www.themoviedb.org/). Created app and api key.
 - Strict Mode removal for now to fix multiple actions by react in index.js
-
-
+- Custom hook for now playing Movie
+- Added the youtube embed video as a background with autoplay
 
 
 # Features
