@@ -12,17 +12,26 @@ const VideoContainer = () => {
     useMovieTrailer(mainMovie);
 
   return (
-    <div>
-        <div>
-            <iframe className='w-screen aspect-video absolute' src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=0&mute=0"} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-        </div>
-        <div className='pt-[20rem] px-12 text-white absolute'>
-            <h1 className='text-6xl bold'>{mainMovie?.original_title}</h1>
-            <p className='py-6 text-lg w-1/2'>{mainMovie?.overview}</p>
-            <div>
-                <button className='bg-white text-black p-4 rounded center text-xl w-40 hover:bg-opacity-70'>Play</button>
-                <button className='bg-white text-black p-4 rounded center text-xl w-40 hover:bg-opacity-70 mx-2'>More Info</button>
+    <div className='pt-[30%] bg-black md:pt-0'>
+        <div className="w-screen aspect-video pt-[20%] px-6 md:px-24 absolute text-white bg-gradient-to-r from-black">
+            <h1 className="text-2xl md:text-6xl font-bold">{mainMovie?.original_title}</h1>
+            <p className="hidden md:inline-block py-6 text-lg w-1/4">{mainMovie?.overview}</p>
+            <div className="my-4 md:m-0">
+                <button className=" bg-white text-black py-1 md:py-4 px-3 md:px-12 text-xl  rounded-lg hover:bg-opacity-80">
+                ▶️ Play
+                </button>
+                <button className="hidden md:inline-block mx-2  bg-gray-500 text-white p-4 px-12 text-xl bg-opacity-50 rounded-lg">
+                More Info
+                </button>
             </div>
+        </div>
+        <div className="w-screen">
+            <iframe
+                className="w-screen aspect-video"
+                src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=0&mute=0"}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            ></iframe>
         </div>
     </div>
   )
