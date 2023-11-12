@@ -29,7 +29,7 @@ const VideoContainer = () => {
             <iframe
                 className="w-screen aspect-video"
                 src={"https://www.youtube.com/embed/" + movieTrailor?.key + "?autoplay=0&mute=0"}
-                title="YouTube video player"
+                title="YouTube video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
         </div>
