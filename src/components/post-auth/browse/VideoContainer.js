@@ -21,7 +21,7 @@ const VideoContainer = () => {
                 ▶️ Play
                 </button>
                 <button className="hidden md:inline-block mx-2  bg-gray-500 text-white p-4 px-12 text-xl bg-opacity-50 rounded-lg">
-                More Info
+                More
                 </button>
             </div>
         </div>
