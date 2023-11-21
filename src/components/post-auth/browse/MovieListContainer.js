@@ -37,19 +37,3 @@ const MovieListContainer = () => {
 }
 
 export default MovieListContainer;
-
-
-// shortest path get the closest lift/elevator nearby
-
-// var lift1 = 2, lift2 = 3;
-// var yourPos = 1;
-
-// const callLift = (yourPos) => {
-//   if(Math.abs(yourPos - lift1) <= Math.abs(yourPos - lift2)) {
-//     return lift1;
-//   } else {
-//     return lift2;
-//   }
-// };
-
-// callLift(yourPos);
