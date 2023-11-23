@@ -5,6 +5,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO } from '../utils/constant';
+import { togglrGptSearchView } from '../utils/gptSlice';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -32,6 +33,10 @@ const Header = () => {
     return () => unsubscribe(); // removing the event listener on comonent unmount
   }, []);
 
+  const handleGptSearch = () => {
+    dispatch(togglrGptSearchView());
+  }
+
   return (
     <div className='absolute px-8 py-2 z-10 w-screen bg-gradient-to-b from-black flex justify-between'>
       <img
@@ -40,6 +45,7 @@ const Header = () => {
         src= {LOGO}
       />
       {user? <div className='flex p-4 items-center'>
+        <button className='py-2 px-4 m-2 bg-purple-800 text-white rounded-lg mx-4 my-4' onClick={handleGptSearch}>GPT Search</button>
         <div className='text-slate-100 cursor-pointer hover:text-white hover:underline'>{user?.displayName}</div>
         <img
           className="profile-icon w-12 h-12 mr-2" 
