@@ -4,7 +4,8 @@ const movieSlice = createSlice({
     name: 'movie',
     initialState: {
         nowPlayingMovies: [],
-        trailerVideo: null
+        trailerVideo: null,
+        movieSearchResult: []
     },
     reducers: {
         addNowPlayingMovies: (state, action) => {

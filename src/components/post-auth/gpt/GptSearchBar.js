@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import openai from '../../../utils/openAI';
+import { API_OPTIONS } from '../../../utils/constant';
 
 const GptSearchBar = () => {
 
@@ -19,7 +20,12 @@ const GptSearchBar = () => {
         // });
 
         // console.log(gptResult.choices);
+        // Sample GPT response
         
+        const data = await fetch("https://api.themoviedb.org/3/search/movie?query=" + searchText.current.value, API_OPTIONS);
+        const json = await data.json();
+        
+        console.log(json.results);
     }
 
   return (
