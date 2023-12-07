@@ -96,6 +96,7 @@ const Login = () => {
                 handleChange,
                 handleBlur,
                 handleSubmit,
+                setFieldValue,
                 isSubmitting,
                 /* and other goodies */
             }) => (
@@ -130,7 +131,9 @@ const Login = () => {
                         className='p-4 my-4 w-full bg-slate-800 rounded' 
                         type="password"
                         name="password"
-                        onChange={handleChange}
+                        onChange={(e) => {
+                            setFieldValue('password', e.value);
+                        }}
                         onBlur={handleBlur}
                         value={values.password}
                     />
